@@ -1,1 +1,0 @@
-/usr/bin/x86_64-linux-gnu-gcc-7 -g   CMakeFiles/udb.dir/main.c.o  -o udb 
