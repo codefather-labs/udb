@@ -1,0 +1,4 @@
+/home/codefather/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/codefather/CLionProjects/udb
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/codefather/CLionProjects/udb/cmake-build-debug

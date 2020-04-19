@@ -1,0 +1,1 @@
+cd cmake-build-debug && udb u.db

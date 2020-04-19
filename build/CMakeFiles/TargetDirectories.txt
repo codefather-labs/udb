@@ -1,0 +1,3 @@
+/home/codefather/CLionProjects/udb/build/CMakeFiles/rebuild_cache.dir
+/home/codefather/CLionProjects/udb/build/CMakeFiles/udb.dir
+/home/codefather/CLionProjects/udb/build/CMakeFiles/edit_cache.dir
