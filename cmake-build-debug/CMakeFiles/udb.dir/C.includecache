@@ -17,6 +17,12 @@ src/core/vm.h
 /home/codefather/CLionProjects/udb/src/backend/os-interface.h
 
 /home/codefather/CLionProjects/udb/src/backend/pager.h
+errno.h
+-
+fcntl.h
+-
+unistd.h
+-
 fcntl.h
 -
 zconf.h

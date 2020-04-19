@@ -5,6 +5,10 @@
 #ifndef UDB_PAGER_H
 #define UDB_PAGER_H
 
+#include <errno.h>
+#include <fcntl.h>
+#include <unistd.h>
+
 #define size_of_attribute(Struct, Attribute) sizeof(((Struct*)0)->Attribute)
 
 #define TABLE_MAX_PAGES 100
