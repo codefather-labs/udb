@@ -21,10 +21,11 @@ typedef enum {
 } ExecuteResult;
 
 
-void *row_slot(Table *table, uint32_t row_num) {
+void *cursor_value(Cursor* cursor) {
+    uint32_t row_num = cursor->row_num;
     uint32_t page_num = row_num / ROWS_PER_PAGE;
 
-    void* page = get_page(table->pager, page_num);
+    void* page = get_page(cursor->table->pager, page_num);
 
     uint32_t row_offset = row_num % ROWS_PER_PAGE;
     uint32_t byte_offset = row_offset * ROW_SIZE;
@@ -42,10 +43,9 @@ ExecuteResult execute_insert(Statement *statement, Table *table) {
     }
 
     Row *row_to_insert = &(statement->row_to_insert);
+    Cursor* cursor = table_end(table);
 
-    serialize_row(row_to_insert, row_slot(
-            table, table->num_rows
-    ));
+    serialize_row(row_to_insert, cursor_value(cursor));
     table->num_rows += 1;
 
     return EXECUTE_SUCCESS;
@@ -53,11 +53,15 @@ ExecuteResult execute_insert(Statement *statement, Table *table) {
 
 ExecuteResult execute_select(Statement *statement,
                              Table *table) {
+    Cursor* cursor = table_start(table);
+
     Row row;
-    for (uint32_t i = 0; i < table->num_rows; i++) {
-        deserialize_row(row_slot(table, i), &row);
+    while (!(cursor->end_of_table)) {
+        deserialize_row(cursor_value(cursor), &row);
         print_row(&row);
+        cursor_advance(cursor);
     }
+    free(cursor);
     return EXECUTE_SUCCESS;
 }
 
